@@ -1,17 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Rubik&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
-
-body{
-  background-color: #4386F8;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 h1{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Berkshire Swash', cursive;
   text-align: center;
 }
-h1:hover {
-  box-shadow: 10px, 10px, 50px, white;
-  font size: 325;
-  color: white;
+
+h2{
+  font-family: 'Raleway', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  background-color: #42f590;
+  display: inline;
+}
+
+li{
+  list-style-type: none;
+}
+
+a{
+  color: black
+}
+
+.btn-group button {
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on shover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+/* The navigation bar */
+.navbar {
+ overflow: hidden;
+ background-color: #333;
+ position: fixed; /* Set the navbar to fixed position */
+ top: 0; /* Position the navbar at the top of the page */
+ width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+ float: left;
+ display: block;
+ color: #f2f2f2;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration: none;
+ font-family: 'Rubik', sans-serif;
+}
+
+.navbar a.active {
+  background-color: #32a852;
+  color: black;
+}
+
+.navbar a:hover {
+  background-color: #32a852;
+  color: black;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+ background: #ddd;
+ color: black;
+}
+
+/* Main content */
+.main {
+ margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+h3 {
+ font-family: 'Montserrat', sans-serif;
+ color: black;
+}
+
+footer{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+p{
+  color: black
+}
+
+.footerflex{
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 200;
+  color: #18DBBB;
+}
+
+h4 {
+  margin-left: 50;
+  margin-right: 50;
+  margin-bottom: 100;
 }
