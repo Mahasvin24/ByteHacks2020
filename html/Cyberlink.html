@@ -1,5 +1,55 @@
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+
+  function eval() {
+    const XHR = new XMLHttpRequest();
+
+    var form = document.getElementById("quizform");
+
+    // Bind the FormData object and the form element
+    const FD = new FormData(form);
+
+    // Define what happens on successful data submission
+    XHR.addEventListener("load", function (event) {
+      if(XHR.status == 200) {
+        console.log('resp: ' + XHR.responseText)
+        var resp = JSON.parse(XHR.responseText)
+        console.log('resp: ' + resp)
+        var form = document.getElementById("quizform");
+        var radios = form.querySelectorAll('input[type=radio]');
+
+        for (var i = 0; i < radios.length; i++) {
+          var radio = radios[i];
+          console.log(radio.name+":"+radio.value)
+          radio.nextElementSibling.style.background = "#ffffff"
+          if(resp[radio.name]) {
+            console.log('resp[radio.name] : '+resp[radio.name])
+            if(resp[radio.name][radio.value] == true) {
+              radio.nextElementSibling.style.background = '#87e079'
+            } else if(resp[radio['name']][radio['value']] == false) {
+              radio.nextElementSibling.style.background = '#ff8f8f'
+            }
+          }
+        }
+      } else {
+        alert('Incorrect');
+      }
+    });
+
+    // Define what happens in case of error
+    XHR.addEventListener("error", function (event) {
+      alert('Error!');
+    });
+
+    // Set up our request
+    XHR.open("POST", "http://localhost:5000/eval");
+
+    // The data sent is what the user provided in the form
+    XHR.send(FD);
+  }
+
+</script>
 <head>
 <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Bubonic Plague</title>
@@ -12,7 +62,7 @@
  <a href="#theproblem">The Problem</a>
  <a href="#thesolution">The Solution</a>
  <a href="#lifelesson">Life Lesson</a>
- <a href="#concerningfacts">Concering Facts</a>
+ <a href="#pictures">Pictures</a>
  <a href="#quiz">Quiz</a>
  <a href="#contactus">Contact Us</a>
 </div>
@@ -21,20 +71,71 @@
 </div>
 <h1><a id="theproblem">A Plague is Coming...</h1>
 <h2>The Problem</h2>
-<h3>Rats are stowing away on the Silk Road travelers’ items with the fleas containing the plague. They come through the silk road to your home from central Asia. People aren’t being clean and are keeping their houses dirty. By doing so, you attract rats with fleas on them to come into your houses. This is a big problem since the flea on the rats have the plague. Since the flea drinks the blood of the rodents, they will take your blood when the rats run out of the blood and die. When the flea   <a id="thesolution">takes your blood, you won’t feel it, and won’t know if they even did. During the process, they unknowingly give you the plague.</h3>
+<h3>Rats are stowing away on the Silk Road travelers’ items with the fleas containing the plague. They come through the silk road to your home from central Asia. People aren’t being clean and hygienic, and are keeping their houses dirty. This attracts rats with fleas on them to come into your houses. This is a big problem since the fleas on the rats have the plague. Since the fleas drink the blood of the rodents and rats they are on, they will take your blood when the rats run out of the blood and die. When the fleas take your blood, you won’t feel it, and won’t know if they even did. During the process, they unknowingly give you some of the plagues. The black death was very fatal and spread very quickly. It didn't help that people’s immunity was very low and caught the bubonic plague very quickly. The main symptoms were fever, chills, extreme weakness, abdominal pain, diarrhea, vomiting, bleeding from your mouth, nose or rectum, or under your skin, shock, blackening and death of tissue in your extremities, most commonly your fingers, toes, and nose also known as necrosis. There were not many doctors around who wanted to help patients in fear of getting the plague. This left the upper class with lots of money with very few doctors and the lower class who didn't have the doctors were simply left to die. Homeless people often contracted the virus and passed away. It was not helpful that doctors prescribed solutions of covering yourself in cow dung and urine, and rubbing yourself with a <a id="thesolution"> chicken, which only helped spread the virus.</h3>
 <h2>The Solution</h2>
 <h3>To avoid the Bubonic Plague, you need to maintain your health and hygiene. People have to take baths and showers everyday at least twice and have to wash their hands a lot of times every day. Remove brush, rock piles, junk, cluttered firewood, and possible rodent food supplies, such as pet and wild animal food. Make your home and outbuildings rodent-proof. Wear gloves if you are handling or skinning potentially infected animals to prevent contact between your skin and the plague bacteria. <a id="lifelesson">People with the virus should isolate themselves so they don’t infect other people. People who don’t have the virus should avoid the people with the virus and should isolate themselves in their houses.</h3>
 <h2>Life Lesson</h2>
-<h3>The reign of the Bubonic Plague ended because more and more people started isolating themselves and so they stopped getting infected. In all this, people learnt that it's very important that you maintain your hygiene and keep your houses clean. When you keep yourself and the area around yourself clean, it gives you more positive energy<a id="quiz"> and reduces chances of you getting diseases.</h3><br>
+<h3>The reign of the Bubonic Plague ended because more and more people started isolating themselves and so they stopped getting infected. In all this, people learnt that it's very important that you maintain your hygiene and keep your houses clean. When you keep yourself and the area around yourself clean, it gives you more positive energy and reduces chances of you getting diseases.<a id="pictures"></h3><br>
+<h2>Pictures</h2>
+<img src="../Images/Plague.jpg"></img>
+<h6>*The image <a id="quiz"> shows information about the plague.</h6>
 <h2>Quiz</h2>
-<h3>How many people will the plague kill if we aren't hygienic?</h3>
+<form id="quizform" action="javascript:eval();" method="post">
 
-<div class="btn-group">
- <button>25 million</button>
- <button>42 million</button>
- <button>36 million</button>
- <button>5 million</button>
-</div>
+<h4>How many people will the plague kill if we aren't hygienic?</h4>
+<input type="radio" id="25million" name="Q1" value="A1">
+<label for="25million">25 Million</label><br>
+<input type="radio" id="42million" name="Q1" value="A2">
+<label for="42million">42 Million</label><br>
+<input type="radio" id="36million" name="Q1" value="A3">
+<label for="25million">36 Million</label><br>
+<input type="radio" id="5million" name="Q1" value="A4">
+<label for="5million">5 Million</label><br>
+
+<h4>When did the bubonic plague begin?</h4>
+<input type="radio" id="1344" name="Q2" value="A1">
+<label for="1344">1344</label><br>
+<input type="radio" id="1345" name="Q2" value="A2">
+<label for="1345">1345</label><br>
+<input type="radio" id="1346" name="Q2" value="A3">
+<label for="1346">1346</label><br>
+<input type="radio" id="1347" name="Q2" value="A4">
+<label for="1347">1347</label><br>
+
+<h4>What caused the plague to spread?</h4>
+<input type="radio" id="Rregularcleaningandself-isolation" name="Q3" value="A1">
+<label for="Rregularcleaningandself-isolation">Regular Cleaning and Self-Isolation</label><br>
+<input type="radio" id="animalspassingonthevirus" name="Q3" value="A2">
+<label for="animalspassingonthevirus">Animals Passing on the Virus</label><br>
+<input type="radio" id="badhygeine" name="Q3" value="A3">
+<label for="badhygeine">Bad Hygeine</label><br>
+<input type="radio" id="nottakingprecautions" name="Q3" value="A4">
+<label for="nottakingprecautions">Not Taking Precautions</label><br>
+
+<h4>What can slow down the spread of the plague?</h4>
+<input type="radio" id="stayinghygeinic" name="Q4" value="A1">
+<label for="stayinghygeinic">Staying Hygeinic</label><br>
+<input type="radio" id="keepingyourhouseclean" name="Q4" value="A2">
+<label for="keepingyourhouseclean">Keeping Your House Clean</label><br>
+<input type="radio" id="self-isolation" name="Q4" value="A3">
+<label for="self-isolation">Self-Isolation</label><br>
+<input type="radio" id="alloftheabove" name="Q4" value="A4">
+<label for="alloftheabove">All of the above</label><br>
+<br>
+
+<h4>Where did the plague originate?</h4>
+<input type="radio" id="china" name="Q5" value="A1">
+<label for="china">China</label><br>
+<input type="radio" id="england" name="Q5" value="A2">
+<label for="england">England</label><br>
+<input type="radio" id="europe" name="Q5" value="A3">
+<label for="europe">Europe</label><br>
+<input type="radio" id="india" name="Q5" value="A4">
+<label for="india">India</label><br>
+<br>
+
+<input type="submit" name="submit" value="Submit">
+</form>
 <br><br>
 <a id="contactus">
 <footer>

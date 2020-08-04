@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<script type="text/javascript">
+
+  function eval() {
+    const XHR = new XMLHttpRequest();
+
+    form = document.getElementById( "quiz" );
+
+    // Bind the FormData object and the form element
+    const FD = new FormData(form);
+
+    // Define what happens on successful data submission
+    XHR.addEventListener("load", function (event) {
+      if(XHR.status == 200) {
+        alert('Correct');
+      } else {
+        alert('Incorrect');
+      }
+    });
+
+    // Define what happens in case of error
+    XHR.addEventListener("error", function (event) {
+      alert('Error!');
+    });
+
+    // Set up our request
+    XHR.open("POST", "http://localhost:5000/eval");
+
+    // The data sent is what the user provided in the form
+    XHR.send(FD);
+  }
+
+</script>
+
+<form id="quiz" action="javascript:eval();" method="post">
+
+  <input type="radio" name="a1" value="Left">
+  <label>Left</label>
+  <br>
+  <input type="radio" name="a1" value="Right">
+  <label>Right</label>
+  <br>
+  <input type="submit" name="submit" value="Submit">
+
+</form>
+
+
+
+
+</html>
