@@ -1,7 +1,7 @@
 # Team Cyberlink
 
 ## Introduction
-<here>
+The deadly bubonic plague killed around 25 million people throughout 7 years from 1346 to 1354. Our website will be accessible to everyone and will bring knowledge to the public about this plague.
 
 ## How to run the application
 
